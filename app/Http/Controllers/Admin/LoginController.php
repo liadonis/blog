@@ -27,12 +27,14 @@ class LoginController extends CommonController
                 return back()->with('msg','使用者帳號或密碼錯誤!');
             }
 
-            session(['user'=>$user]);
-            dd(session('user'));
-            echo 'OK';
+//            session(['user'=>$user]); //密碼測試
+//            dd(session('user'));      //密碼測試
+
+
+            return redirect('admin.index');
         }else{
 
-
+//            dd($_SERVER);
             return view('admin.login');
         }
 
