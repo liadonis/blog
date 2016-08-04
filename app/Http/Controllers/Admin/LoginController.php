@@ -30,14 +30,22 @@ class LoginController extends CommonController
 //            session(['user'=>$user]); //密碼測試
 //            dd(session('user'));      //密碼測試
 
-
-            return redirect('admin.index');
+            session(['user'=>$user]);
+            return redirect('admin/index');
         }else{
 
 //            dd($_SERVER);
+
+            session(['user'=>null]); //清空session
             return view('admin.login');
         }
 
+    }
+
+    public function quit()
+    {
+        session(['user'=>null]);
+        return redirect('admin/login');
     }
 
     public function code()
@@ -46,16 +54,18 @@ class LoginController extends CommonController
         $code->make();
     }
 
-    public function crypt()
-    {
-        //<250
-        $str = '123456';
+//密碼測試
 
-        $str_p ="eyJpdiI6ImJzMjRSN0ZCYmhEc09oU3BGKzQwQlE9PSIsInZhbHVlIjoiVDFYTzI4cHJjMXNMbVFNemdtU0ZmQT09IiwibWFjIjoiNzRhYjZiNjQyODNkY2I1OTczZTE3NWQyZGNjYTg2MzBkNzhlMTQ0NzhmNGVjNmRmNDNlMjc1MjFhZWY5ZjI2NyJ9";
-
-        echo Crypt::encrypt($str);
-        echo "<br>";
-        echo Crypt::decrypt($str_p);
-    }
+//    public function crypt()
+//    {
+//        //<250
+//        $str = '123456';
+//
+//        $str_p ="eyJpdiI6ImJzMjRSN0ZCYmhEc09oU3BGKzQwQlE9PSIsInZhbHVlIjoiVDFYTzI4cHJjMXNMbVFNemdtU0ZmQT09IiwibWFjIjoiNzRhYjZiNjQyODNkY2I1OTczZTE3NWQyZGNjYTg2MzBkNzhlMTQ0NzhmNGVjNmRmNDNlMjc1MjFhZWY5ZjI2NyJ9";
+//
+//        echo Crypt::encrypt($str);
+//        echo "<br>";
+//        echo Crypt::decrypt($str_p);
+//    }
 
 }

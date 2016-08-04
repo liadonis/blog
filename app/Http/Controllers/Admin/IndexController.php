@@ -21,6 +21,11 @@ class IndexController extends CommonController
     {
         return view('admin.info');
     }
-    
+
+//    public function quit()
+//    {
+//        session(['user'=>null]);
+//        return redirect('admin/login');
+//    }
     
 }
