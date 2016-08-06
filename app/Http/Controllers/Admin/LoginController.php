@@ -36,7 +36,7 @@ class LoginController extends CommonController
 
 //            dd($_SERVER);
 
-            session(['user'=>null]); //清空session
+//            session(['user'=>null]); //清空session
             return view('admin.login');
         }
 

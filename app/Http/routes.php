@@ -12,21 +12,24 @@
 */
 
 /**/
+//Route::group(['middleware' => ['web']], function () {
     Route::get('/', function () {
         return view('welcome');
     });
 
 //    Route::any('admin/crypt','Admin\LoginController@crypt');//密碼測試
 
-
-
     Route::any('admin/login','Admin\LoginController@login');
     Route::get('admin/code','Admin\LoginController@code');
-    
-Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'], function (){
-    Route::any('index','IndexController@index');
-    Route::any('info','IndexController@info');
-    Route::any('quit','LoginController@quit');
+
+//});
+//Route::group(['middleware' => ['web','admin.login'], 使用'web中間件無法出現錯誤訊息'
+Route::group(['middleware' => ['admin.login'],'prefix'=>'admin','namespace'=>'Admin'], function (){
+    Route::get('index','IndexController@index');
+    Route::get('info','IndexController@info');
+    Route::get('quit','LoginController@quit');
+    Route::any('pass','IndexController@pass');
+
 });
 
 
