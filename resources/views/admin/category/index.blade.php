@@ -61,7 +61,7 @@
 
                     <tr>
                         <td class="tc">
-                            <input type="text" name="ord[]" value="{{$v->cate_order}}">
+                            <input type="text" onchange="changeOrder(this,'{{$v->cate_id}}')" value="{{$v->cate_order}}">
                         </td>
                         <td class="tc">{{$v->cate_id}}</td>
                         <td>
@@ -110,7 +110,27 @@
         </div>
     </form>
     <!--搜索結果頁面 列表 結束-->
+    <script>
+//        $(function () {
+////            alert('');
+//            
+//        })
+        function changeOrder(obj,cate_id) {
+//            alert('');
+            //       自定義url
+            var cate_order = $(obj).val();
 
+            $.post("{{url('admin/cate/changeorder')}}",{'_token':'{{csrf_token()}}','cate_id':cate_id,'cate_order':cate_order},function (data) {
+                if (data.status == 0){
+                    layer.msg(data.msg, {icon: 6});
+                    window.location.reload();
+                }else {
+                    layer.msg(data.msg, {icon: 5});
+                    window.location.reload();
+                }
+            })
+        }
+    </script>
 @endsection
 
 
