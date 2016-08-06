@@ -15,7 +15,30 @@ class CategoryController extends CommonController
         $categorys = Category::all();
 //        dd($categorys);
 //        echo 'get admin/category';
-        return view('admin.category.index')->with('data',$categorys);
+        $data = $this->getTree($categorys);
+
+        return view('admin.category.index')->with('data',$data);
+    }
+
+    public function getTree($data)
+    {
+//        dd($data);
+        $arr = array();
+        foreach ($data as $k=>$v){
+            if ($v->cate_pid==0){
+//                echo $v->cate_name;
+                $data[$k]['_cate_name'] = $data[$k]['cate_name'];
+                $arr[] = $data[$k];
+                foreach ($data as $m=>$n){
+                    if ($n->cate_pid == $v->cate_id){
+                        $data[$m]['_cate_name'] = '├─ '.$data[$m]['cate_name'];
+                        $arr[] = $data[$m];
+                    }
+                }
+            }
+        }
+//        dd($arr);
+        return $arr;
     }
 
     //post admin/category
