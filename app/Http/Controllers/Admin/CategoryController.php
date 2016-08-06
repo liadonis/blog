@@ -47,14 +47,7 @@ class CategoryController extends CommonController
                 'msg' => '分類排序更新失敗,請稍後重試!',
             ];
         }
-        return $data; 
-
-    }
-
-
-    //post admin/category
-    public function store()
-    {
+        return $data;
 
     }
 
@@ -62,7 +55,15 @@ class CategoryController extends CommonController
 
     public function create()
     {
+        $data = Category::where('cate_pid',0)->get();
+        return view('admin/category/add',compact('data'));
+    }
 
+    //post admin/category  增加分類提交
+    public function store()
+    {
+        $input = Input::all();
+        dd($input);
     }
 
     //get admin/category/{category}  顯示單個分類訊息
