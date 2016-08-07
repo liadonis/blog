@@ -39,45 +39,61 @@
             <table class="add_tab">
                 <tbody>
                     <tr>
-                        <th width="120"><i class="require">*</i>父級分類：</th>
+                        <th width="120">分類：</th>
                         <td>
-                            <select name="cate_pid">
-                                <option value="0">==頂級分類==</option>
+                            <select name="cate_id">
                                 @foreach($data as $d)
-                                    <option value="{{$d->cate_id}}">{{$d->cate_name}}</option>
+                                    <option value="{{$d->cate_id}}">{{$d->_cate_name}}</option>
                                 @endforeach
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <th><i class="require">*</i>分類名稱：</th>
+                        <th><i class="require">*</i>文章標題：</th>
                         <td>
-                            <input type="text" name="cate_name">
-                            <span><i class="fa fa-exclamation-circle yellow"></i>分類名稱為必填項目</span>
+                            <input type="text" class="lg" name="art_title">
                         </td>
                     </tr>
                     <tr>
-                        <th>分類標題：</th>
+                        <th>編輯：</th>
                         <td>
-                            <input type="text" class="lg" name="cate_title">
+                            <input type="text" class="sm" name="art_deitor">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>縮略圖：</th>
+                        <td>
+                            <input type="text" size="50" name="art_thumb">
                         </td>
                     </tr>
                     <tr>
                         <th>關鍵詞：</th>
                         <td>
-                            <textarea name="cate_keywords"></textarea>
+                            <input type="text" class="lg" name="art_tag"></>
                         </td>
                     </tr>
                     <tr>
                         <th>描述：</th>
                         <td>
-                            <textarea name="cate_description"></textarea>
+                            <textarea name="art_description"></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <th><i class="require">*</i>排序：</th>
+                        <th>文章內容：</th>
                         <td>
-                            <input type="text" class="sm" name="cate_order">
+                            <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.config.js')}}"></script>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.all.min.js')}}"> </script>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
+                            <script id="editor" name="art_content" type="text/plain" style="width:860px;height:500px;"></script>
+                            <script type="text/javascript">
+                                var ue = UE.getEditor('editor');
+                            </script>
+                            <style>
+                                .edui-default{line-height: 28px;}
+                                div.edui-combox-body,div.edui-button-body,div.edui-splitbutton-body
+                                {overflow: hidden; height:20px;}
+                                div.edui-box{overflow: hidden; height:22px;}
+                            </style>
                         </td>
                     </tr>
                     <tr>
