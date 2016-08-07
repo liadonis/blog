@@ -88,17 +88,37 @@ class CategoryController extends CommonController
         }
     }
 
+    //get admin/category/{category}/edit  編輯分類
+    public function edit($cate_id)
+    {
+//        echo $cate_id;
+        $field = Category::find($cate_id);
+//        dd($field);
+        $data = Category::where('cate_pid',0)->get();
+
+        return view('admin.category.edit',compact('field','data'));
+    }
+
+    //put admin/category/{category}  更新分類
+    public function update($cate_id)
+    {
+        $input = Input::except('_token','_method');
+//        dd($input);
+        $result = Category::where('cate_id',$cate_id)->update($input);
+//        dd($result);
+        if ($result){
+            return redirect('admin/category');
+        }else{
+            return back()->with('errors','資料更新失敗，或您未更新任何資料，請稍後重試!');
+        }
+    }
+
     //get admin/category/{category}  顯示單個分類訊息
     public function show()
     {
 
     }
 
-    //put admin/category/{category}  更新分類
-    public function update()
-    {
-
-    }
 
     //delete admin/category/{category}  刪除單個分類
     public function destroy()
@@ -106,11 +126,7 @@ class CategoryController extends CommonController
 
     }
     
-    //get admin/category/{category}/edit  編輯分類
-    public function edit()
-    {
-        
-    }
+
 
 
 }
