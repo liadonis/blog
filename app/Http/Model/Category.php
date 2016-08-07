@@ -9,6 +9,8 @@ class Category extends Model
     protected $table = 'category';  //資料表因為之前有預設前綴blog_所以不用加
     protected $primaryKey = 'cate_id';
     public $timestamps = false; //這一行用來取消系統默認的更新刪除時間
+    protected $guarded = []; //填入資料時將資料表的這個欄位忽略，默認為[]時代表填入資料至資料表欄位時可以有空值
+//    protected $fillable = ['name']; //將資料填入資料表時要填寫的欄位
 
     public function tree()
     {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Model\Category;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 
@@ -62,8 +62,30 @@ class CategoryController extends CommonController
     //post admin/category  增加分類提交
     public function store()
     {
-        $input = Input::all();
-        dd($input);
+        $input = Input::except('_token');
+//        dd($input);
+
+        $rules = [
+            'cate_name'=>'required',
+        ];
+        $message = [
+            'cate_name.required'=>'分類名稱為必填項目!',
+        ];
+        //要驗證的數據,驗證規則,自定義錯誤訊息
+        $validator = Validator::make($input,$rules,$message);
+
+        if ($validator->passes()){
+            $result = Category::create($input);
+//            dd($result);
+            if ($result){
+                return redirect('admin/category');
+            }else{
+                return back()->with('errors','新增文章分類失敗，請稍後重試!');
+            }
+        }else{
+
+            return back()->withErrors($validator);
+        }
     }
 
     //get admin/category/{category}  顯示單個分類訊息
