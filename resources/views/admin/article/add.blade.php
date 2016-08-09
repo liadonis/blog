@@ -77,7 +77,12 @@
                                             '_token'     : "{{csrf_token()}}"
                                         },
                                         'swf'      : "{{asset('resources/org/uploadify/uploadify.swf')}}",
-                                        'uploader' : "{{url('admin/upload')}}"
+                                        'uploader' : "{{url('admin/upload')}}",
+                                        'onUploadSuccess' : function(file, data, response) {
+                                            $('input[name=art_thumb]').val(data);
+                                            $('#art_thumb_img').attr('src','/'+data);
+//                                            alert(data);
+                                        }
                                     });
                                 });
                             </script>
@@ -89,9 +94,15 @@
                         </td>
                     </tr>
                     <tr>
+                        <th></th>
+                        <td>
+                            <img src="" alt="" id="art_thumb_img" style="max-width: 350px;max-height: 100px">
+                        </td>
+                    </tr>
+                    <tr>
                         <th>關鍵詞：</th>
                         <td>
-                            <input type="text" class="lg" name="art_tag"></>
+                            <input type="text" class="lg" name="art_tag">
                         </td>
                     </tr>
                     <tr>
