@@ -12,7 +12,7 @@
 	<div class="result_wrap">
         <div class="result_title">
             <h3>新增文章</h3>
-            @if(count($errors)>0)
+                @if(count($errors)>0)
                 <div class="mark">
                     @if(is_object($errors))
                         @foreach($errors->all() as $error)
@@ -22,7 +22,8 @@
                         <p>{{$errors}}</p>
                     @endif
                 </div>
-            @endif
+                @endif
+
         </div>
         <div class="result_content">
             <div class="short_wrap">
@@ -34,7 +35,7 @@
     <!--結果及標題與導航組件 結束-->
     
     <div class="result_wrap">
-        <form action="{{url('admin/category')}}" method="post">
+        <form action="{{url('admin/article')}}" method="post">
             {{csrf_field()}}
             <table class="add_tab">
                 <tbody>
@@ -57,7 +58,7 @@
                     <tr>
                         <th>編輯：</th>
                         <td>
-                            <input type="text" class="sm" name="art_deitor">
+                            <input type="text" class="sm" name="art_editor">
                         </td>
                     </tr>
                     <tr>
@@ -108,7 +109,8 @@
                     <tr>
                         <th>描述：</th>
                         <td>
-                            <textarea name="art_description"></textarea>
+                            {{--<textarea name="art_description"></textarea>--}}
+                            <input type="text" class="lg" name="art_description">
                         </td>
                     </tr>
                     <tr>
