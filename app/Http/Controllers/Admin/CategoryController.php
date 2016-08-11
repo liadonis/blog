@@ -133,7 +133,7 @@ class CategoryController extends CommonController
             ];
         }else{
             $data = [
-                'status' => 0,
+                'status' => 1,
                 'msg' => '分類刪除失敗，請稍後重試!',
             ];
 

@@ -86,4 +86,23 @@ class ArticleController extends CommonController
         }
     }
 
+    //delete admin/article/{article}  刪除單篇文章
+    public function destroy($art_id)
+    {
+        $result = Article::where('art_id',$art_id)->delete();
+        if($result){
+            $data = [
+                'status' => 0,
+                'msg' => '文章刪除成功!',
+            ];
+        }else{
+            $data = [
+                'status' => 1,
+                'msg' => '文章刪除失敗，請稍後重試!',
+            ];
+
+        }
+        return $data;
+    }
+
 }
