@@ -40,8 +40,8 @@
             <!--快捷導航 開始-->
             <div class="result_content">
                 <div class="short_wrap">
-                    <a href="{{url('admin/category/create')}}"><i class="fa fa-plus"></i>新增分類</a>
-                    <a href="{{url('admin/category')}}"><i class="fa fa-recycle"></i>全部分類</a>
+                    <a href="{{url('admin/links/create')}}"><i class="fa fa-plus"></i>新增連結</a>
+                    <a href="{{url('admin/links')}}"><i class="fa fa-recycle"></i>全部連結</a>
                 </div>
             </div>
             <!--快捷導航 結束-->
@@ -110,7 +110,7 @@
             layer.confirm('您確定要刪除這個分類嗎？', {
                 btn: ['確定','取消'] //按钮
             }, function(){
-                $.post("{{url('admin/category/')}}/"+cate_id,{'_method':'delete','_token':'{{csrf_token()}}'},function (data) {
+                $.post("{{url('admin/links/')}}/"+cate_id,{'_method':'delete','_token':'{{csrf_token()}}'},function (data) {
                     if (data.status == 0){
                         location.href = location.href; //這一行也可以返回當前頁面
                         layer.msg(data.msg, {icon: 1});
