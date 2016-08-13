@@ -73,7 +73,7 @@
                         <td>{{$v->link_url}}</td>
                         <td>
                             <a href="{{url('admin/links/'.$v->link_id.'/edit')}}">修改</a>
-                            <a href="javascript:;" onclick="delCate({{$v->link_id}})">刪除</a>
+                            <a href="javascript:;" onclick="delLinks({{$v->link_id}})">刪除</a>
                         </td>
                     </tr>
                     @endforeach
@@ -83,13 +83,11 @@
     </form>
     <!--搜索結果頁面 列表 結束-->
     <script>
-//        $(function () {
-////            alert('');
-//            
-//        })
+
+
+        /*==================更新排序======================*/
         function changeOrder(obj,link_id) {
-//            alert('');
-            //       自定義url
+
             var link_order = $(obj).val();
 
             $.post("{{url('admin/links/changeorder')}}",{'_token':'{{csrf_token()}}','link_id':link_id,'link_order':link_order},function (data) {
@@ -103,25 +101,22 @@
             })
         }
 
-        //刪除分類
+        /*==================刪除=====================*/
 
-        function delCate(cate_id) {
+        function delLinks(link_id) {
             //詢問視窗
-            layer.confirm('您確定要刪除這個分類嗎？', {
+            layer.confirm('您確定要刪除這個連結嗎？', {
                 btn: ['確定','取消'] //按钮
             }, function(){
-                $.post("{{url('admin/links/')}}/"+cate_id,{'_method':'delete','_token':'{{csrf_token()}}'},function (data) {
+                $.post("{{url('admin/links/')}}/"+link_id,{'_method':'delete','_token':'{{csrf_token()}}'},function (data) {
                     if (data.status == 0){
                         location.href = location.href; //這一行也可以返回當前頁面
                         layer.msg(data.msg, {icon: 1});
-//                        window.location.reload();
                     }else{
                         layer.msg(data.msg, {icon: 2});
                         window.location.reload();
                     }
                 });
-//                alert(cate_id);
-
             }, function(){
 
             });

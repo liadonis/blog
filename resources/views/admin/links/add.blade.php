@@ -48,13 +48,13 @@
                     <tr>
                         <th><i class="require">*</i>連結地址：</th>
                         <td>
-                            <input type="text" class="lg" name="link_url">
+                            <input type="text" class="lg" name="link_url" value="http://">
                         </td>
                     </tr>
                     <tr>
                         <th>連結標題：</th>
                         <td>
-                            <input type="text" class="lg" name="link_title" value="http://">
+                            <input type="text" class="lg" name="link_title" >
                         </td>
                     </tr>
                     <tr>

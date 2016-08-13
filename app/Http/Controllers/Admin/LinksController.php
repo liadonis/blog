@@ -89,4 +89,42 @@ class LinksController extends Controller
         }
     }
 
+
+    //get admin/linkd/{linkd}/edit  編輯友站連結
+    public function edit($link_id)
+    {
+        $field = Links::find($link_id);
+        return view('admin/links/edit',compact('field'));
+    }
+
+    //put admin/links/{links}  更新分類
+    public function update($link_id)
+    {
+        $input = Input::except('_token','_method');
+        $result = Links::where('link_id',$link_id)->update($input);
+        if ($result){
+            return redirect('admin/links');
+        }else{
+            return back()->with('errors','資料更新失敗，或您未更新任何資料，請稍後重試!');
+        }
+    }
+
+    //delete admin/links/{links}  刪除連接
+    public function destroy($link_id)
+    {
+        $result = Links::where('link_id',$link_id)->delete();
+        if($result){
+            $data = [
+                'status' => 0,
+                'msg' => '刪除成功!',
+            ];
+        }else{
+            $data = [
+                'status' => 1,
+                'msg' => '刪除失敗，請稍後重試!',
+            ];
+        }
+        return $data;
+    }
+
 }

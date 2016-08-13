@@ -25,6 +25,13 @@ class CategoryController extends CommonController
         return view('admin.category.index')->with('data',$categorys);
     }
 
+    //get admin/category/{category}  顯示單個分類訊息
+    public function show()
+    {
+
+    }
+
+
     public function changeOrder()
     {
 //       $input = Input::all();
@@ -111,12 +118,6 @@ class CategoryController extends CommonController
         }else{
             return back()->with('errors','資料更新失敗，或您未更新任何資料，請稍後重試!');
         }
-    }
-
-    //get admin/category/{category}  顯示單個分類訊息
-    public function show()
-    {
-
     }
 
 
