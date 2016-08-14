@@ -20,8 +20,31 @@ class ConfigController extends Controller
     //get admin config 全部自定義配置項列表
     public function index()
     {
-        
+
         $data = Config::orderby('conf_order','asc')->get();
+
+        foreach ($data as $k=>$v) {
+            switch ($v->field_type){
+                case 'input':
+                    $data[$k]->_html= '<input type="text" class="lg" name="conf_content" value="'.$v->conf_content.'"> ';
+                    break;
+                case 'textarea':
+                    $data[$k]->_html= '<textarea type="text" class="lg"  name="conf_content">'.$v->conf_content.'</textarea> ';
+                    break;
+                case 'radio':
+                    //1 |開啟 ， 0 |關閉
+                    $arr = explode(',',$v->field_value);
+                    $str ='　';
+                    foreach($arr as $m=>$n){
+
+                        $r = explode('|',$n);
+                        $c = ($v->conf_content == $r[0])?' checked ':' ';
+                        $str .= '<input type="radio" name="conf_content" value="'.$r[0].'"'.$c.'>'.$r[1].'　';
+                    };
+                    $data[$k]->_html = $str;
+                    break;
+            }
+        }
 
         return view('admin.config.index',compact('data'));
     }

@@ -53,9 +53,9 @@
                     <tr>
                         <th class="tc" width="5%">排序</th>
                         <th class="tc" width="5%">ID</th>
-                        <th>配置名稱</th>
-                        <th>配置別名</th>
-                        <th>配置地址</th>
+                        <th>標題</th>
+                        <th>名稱</th>
+                        <th>內容</th>
                         <th>操作</th>
                     </tr>
 
@@ -66,11 +66,11 @@
                             <input type="text" onchange="changeOrder(this,'{{$v->conf_id}}')" value="{{$v->conf_order}}">
                         </td>
                         <td class="tc">{{$v->conf_id}}</td>
+                        <td>{{$v->conf_title}}</td>
                         <td>
                             <a href="#">{{$v->conf_name}}</a>
                         </td>
-                        <td>{{$v->conf_alias}}</td>
-                        <td>{{$v->conf_url}}</td>
+                        <td>{!!$v->_html!!}</td>
                         <td>
                             <a href="{{url('admin/config/'.$v->conf_id.'/edit')}}">修改</a>
                             <a href="javascript:;" onclick="delConfig({{$v->conf_id}})">刪除</a>
@@ -110,7 +110,7 @@
             }, function(){
                 $.post("{{url('admin/config/')}}/"+conf_id,{'_method':'delete','_token':'{{csrf_token()}}'},function (data) {
                     if (data.status == 0){
-                        location.href = location.href; //這一行也可以返回當前頁面
+                        location.href = location.href;
                         layer.msg(data.msg, {icon: 1});
                     }else{
                         layer.msg(data.msg, {icon: 2});
