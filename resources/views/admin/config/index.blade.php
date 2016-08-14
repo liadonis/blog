@@ -32,13 +32,25 @@
     <!--結果頁快捷搜索框 結束-->
 
     <!--搜索結果頁面 列表 開始-->
-    <form action="#" method="post">
         <div class="result_wrap">
             <div class="result_title">
                 <h3>配置列表</h3>
+                @if(count($errors)>0)
+                    <div class="mark">
+                        @if(is_object($errors))
+                            @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        @else
+                            <p>{{$errors}}</p>
+                        @endif
+                    </div>
+                @endif
             </div>
             <!--快捷配置 開始-->
             <div class="result_content">
+                <form action="{{url('admin/config/changecontent')}}" method="post">
+                    {{csrf_field()}}
                 <div class="short_wrap">
                     <a href="{{url('admin/config/create')}}"><i class="fa fa-plus"></i>新增配置</a>
                     <a href="{{url('admin/config')}}"><i class="fa fa-recycle"></i>全部配置</a>
@@ -70,7 +82,10 @@
                         <td>
                             <a href="#">{{$v->conf_name}}</a>
                         </td>
-                        <td>{!!$v->_html!!}</td>
+                        <td>
+                            <input type="hidden" name="conf_id[]" value="{{$v->conf_id}}">
+                            {!!$v->_html!!}
+                        </td>
                         <td>
                             <a href="{{url('admin/config/'.$v->conf_id.'/edit')}}">修改</a>
                             <a href="javascript:;" onclick="delConfig({{$v->conf_id}})">刪除</a>
@@ -78,9 +93,13 @@
                     </tr>
                     @endforeach
                 </table>
+                    <div class="btn_group">
+                        <input type="submit" value="提交">
+                        <input type="button" class="back" onclick="history.go(-1)" value="返回" >
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
     <!--搜索結果頁面 列表 結束-->
     <script>
 

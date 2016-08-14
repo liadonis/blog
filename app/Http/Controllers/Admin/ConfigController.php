@@ -26,10 +26,10 @@ class ConfigController extends Controller
         foreach ($data as $k=>$v) {
             switch ($v->field_type){
                 case 'input':
-                    $data[$k]->_html= '<input type="text" class="lg" name="conf_content" value="'.$v->conf_content.'"> ';
+                    $data[$k]->_html= '<input type="text" class="lg" name="conf_content[]" value="'.$v->conf_content.'"> ';
                     break;
                 case 'textarea':
-                    $data[$k]->_html= '<textarea type="text" class="lg"  name="conf_content">'.$v->conf_content.'</textarea> ';
+                    $data[$k]->_html= '<textarea type="text" class="lg"  name="conf_content[]">'.$v->conf_content.'</textarea> ';
                     break;
                 case 'radio':
                     //1 |開啟 ， 0 |關閉
@@ -39,7 +39,7 @@ class ConfigController extends Controller
 
                         $r = explode('|',$n);
                         $c = ($v->conf_content == $r[0])?' checked ':' ';
-                        $str .= '<input type="radio" name="conf_content" value="'.$r[0].'"'.$c.'>'.$r[1].'　';
+                        $str .= '<input type="radio" name="conf_content[]" value="'.$r[0].'"'.$c.'>'.$r[1].'　';
                     };
                     $data[$k]->_html = $str;
                     break;
@@ -71,6 +71,15 @@ class ConfigController extends Controller
 
     }
 
+    public function changeContent()
+    {
+        $input = Input::all();
+        foreach ($input['conf_id'] as $k=>$v){
+            Config::where('conf_id',$v)->update(['conf_content'=>$input['conf_content'][$k]]);
+        };
+        return back()->with('errors','配置更新成功!');
+    }
+    
     //get admin/config/{config}  顯示單個訊息
     public function show()
     {
