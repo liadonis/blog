@@ -66,7 +66,7 @@
                         <th>類型值：</th>
                         <td>
                             <input type="text" class="lg" name="field_value" >
-                            <p><i class="fa fa-exclamation-circle yellow"></i>類型值只有在類型選擇為radio的情況下才需要配置，格式 1 |開啟 ， 0 |關閉</p>
+                            <p><i class="fa fa-exclamation-circle yellow"></i>類型值只有在類型選擇為radio的情況下才需要配置，格式：1|開啟,0|關閉</p>
 
                         </td>
                     </tr>
@@ -107,8 +107,10 @@
 
             if(type == 'radio'){
                 $('.field_value').show();
+                $('.field_value,input[name=field_value]').val('1|開啟,0|關閉');
             }else{
                 $('.field_value').hide();
+                $('.field_value,input[name=field_value]').val();
             }
 
         }

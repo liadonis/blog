@@ -32,15 +32,18 @@ class ConfigController extends Controller
                     $data[$k]->_html= '<textarea type="text" class="lg"  name="conf_content[]">'.$v->conf_content.'</textarea> ';
                     break;
                 case 'radio':
-                    //1 |開啟 ， 0 |關閉
+                    //1|開啟,0|關閉
                     $arr = explode(',',$v->field_value);
-                    $str ='　';
+
+                    /*目前尚未解決的BUG 不能同時出現兩組radio 否則會出現錯誤*/
+             $str ='  ';
+//                    $str2 = ' </form>　';
                     foreach($arr as $m=>$n){
 
                         $r = explode('|',$n);
                         $c = ($v->conf_content == $r[0])?' checked ':' ';
                         $str .= '<input type="radio" name="conf_content[]" value="'.$r[0].'"'.$c.'>'.$r[1].'　';
-                    };
+                    }
                     $data[$k]->_html = $str;
                     break;
             }
@@ -74,10 +77,20 @@ class ConfigController extends Controller
     public function changeContent()
     {
         $input = Input::all();
-        foreach ($input['conf_id'] as $k=>$v){
+        foreach ($input['conf_id'] as $k=>$v){                   /* 這裡用$k是為了要寫入當條索引值所指向的值*/
             Config::where('conf_id',$v)->update(['conf_content'=>$input['conf_content'][$k]]);
-        };
+        }
+        $this->putFile();
         return back()->with('errors','配置更新成功!');
+    }
+
+    public function putFile()
+    {
+//        echo \Illuminate\Support\Facades\Config::get('web.web_title');
+        $config = Config::pluck('conf_content','conf_name')->all();
+        $path = base_path().'\config\web.php';
+        $str = '<?php return '.var_export($config,true).';';
+        file_put_contents($path,$str);
     }
     
     //get admin/config/{config}  顯示單個訊息
@@ -89,7 +102,6 @@ class ConfigController extends Controller
     //get admin/config/create  增加配置項
     public function create()
     {
-
         return view('admin/config/add');
     }
 
@@ -138,6 +150,7 @@ class ConfigController extends Controller
         $input = Input::except('_token','_method');
         $result = Config::where('conf_id',$conf_id)->update($input);
         if ($result){
+            $this->putFile();
             return redirect('admin/config');
         }else{
             return back()->with('errors','資料更新失敗，或您未更新任何資料，請稍後重試!');
@@ -149,10 +162,12 @@ class ConfigController extends Controller
     {
         $result = Config::where('conf_id',$conf_id)->delete();
         if($result){
+            $this->putFile();
             $data = [
                 'status' => 0,
                 'msg' => '刪除成功!',
             ];
+
         }else{
             $data = [
                 'status' => 1,

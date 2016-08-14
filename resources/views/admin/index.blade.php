@@ -7,8 +7,8 @@
 		<div class="top_left">
 			<div class="logo">後台管理模板</div>
 			<ul>
-				<li><a href="#" class="active">首頁</a></li>
-				<li><a href="#">管理頁</a></li>
+				<li><a href="{{url('/')}}" target="_blank" class="active">前台首頁</a></li>
+				<li><a href="{{url('admin/info')}}" target="main">管理頁面</a></li>
 			</ul>
 		</div>
 		<div class="top_right">
@@ -25,7 +25,7 @@
 	<div class="menu_box">
 		<ul>
 			<li>
-				<h3><i class="fa fa-fw fa-clipboard"></i>常用操作</h3>
+				<h3><i class="fa fa-fw fa-clipboard"></i>內容管理</h3>
 				<ul class="sub_menu">
 					<li><a href="{{url('admin/category/create')}}" target="main"><i class="fa fa-fw fa-plus-square"></i>新增分類</a></li>
 					<li><a href="{{url('admin/category/')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>分類列表</a></li>
@@ -38,6 +38,7 @@
 				<ul class="sub_menu" style="display: block">
 					<li><a href="{{url('admin/links')}}" target="main"><i class="fa fa-fw fa-cubes"></i>友站連結</a></li>
 					<li><a href="{{url('admin/navs')}}" target="main"><i class="fa fa-fw fa-navicon"></i>自定義導航</a></li>
+					<li><a href="{{url('admin/config')}}" target="main"><i class="fa fa-fw fa-cogs"></i>網站配置</a></li>
 				</ul>
 			</li>
 			<li>
@@ -61,7 +62,7 @@
 
 	<!--底部  開始-->
 	<div class="bottom_box">
-		CopyRight © 2015. Powered By <a href="http://www.houdunwang.com">http://www.houdunwang.com</a>.
+		CopyRight © 2016. Powered By <a href="http://laravel.blog/">http://laravel.blog/</a>.
 	</div>
 	<!--底部  結束-->
 

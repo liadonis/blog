@@ -4,14 +4,14 @@
     <!--麵包層導航 開始-->
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 歡迎使用登錄網站後台，建站的首選工具。-->
-        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首頁</a> &raquo; 新增文章分類
+        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首頁</a> &raquo; 分類管理
     </div>
     <!--麵包層導航 結束-->
 
 	<!--結果及標題與導航組件 開始-->
 	<div class="result_wrap">
         <div class="result_title">
-            <h3>分類管理</h3>
+            <h3>新增分類</h3>
             @if(count($errors)>0)
                 <div class="mark">
                     @if(is_object($errors))
