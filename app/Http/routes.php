@@ -13,10 +13,24 @@
 
 /**/
 //Route::group(['middleware' => ['web']], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+//    Route::get('/', function () {
+//        return view('welcome');
+//    });
 
+//=========================Sit Reception 前台================================
+    Route::get('/','Home\IndexController@index');
+
+    Route::get('/cate','Home\IndexController@cate');
+
+    Route::get('/art','Home\IndexController@article');
+
+
+
+
+
+
+
+//======================WebSite Background 後台 =================================
 //    Route::any('admin/crypt','Admin\LoginController@crypt');//密碼測試
 
     Route::any('admin/login','Admin\LoginController@login');
