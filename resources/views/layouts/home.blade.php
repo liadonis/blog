@@ -22,8 +22,7 @@
 @yield('content')
 
 <footer>
-    <p>Design by A <a href="http://laravel.blog/" target="_blank">http://laravel.blog/</a> <a href="/">網站統計</a>
-    </p>
+    <p>{!! Config::get('web.copyright') !!} {!! Config::get('web.web_count') !!}</p>
 </footer>
 </body>
 </html>
