@@ -66,23 +66,7 @@
             <div class="blank"></div>
             <div class="weather"><iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe></div>
             <div class="news">
-                <h3>
-                    <p>最新<span>文章</span></p>
-                </h3>
-                <ul class="rank">
-                    @foreach($new as $i)
-                        <li><a href="{{url('a/'.$i->art_id)}}" title="{{$i->art_title}}" target="_blank">{{$i->art_title}}</a></li>
-                    @endforeach
-                </ul>
-                <h3 class="ph">
-                    <p>點擊<span>排行
-                        </span></p>
-                </h3>
-                <ul class="paih">
-                    @foreach($hot as $h)
-                        <li><a href="{{url('a/'.$h->art_id)}}" title="{{$h->art_title}}" target="_blank">{{$h->art_title}}</a></li>
-                    @endforeach
-                </ul>
+                @parent
                 <h3 class="links">
                     <p>友站<span>連結</span></p>
                 </h3>
