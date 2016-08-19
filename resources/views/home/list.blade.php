@@ -13,6 +13,7 @@
     <article class="blogs">
         <h1 class="t_nav"><span>{{$field->cate_title}}</span><a href="{{url('/')}}" class="n1">網站首頁</a><a
                     href="{{url('cate/'.$field->cate_id)}}" class="n2">{{$field->cate_name}}</a></h1>
+
         <div class="newblog left">
 
             @foreach($data as $d)

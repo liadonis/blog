@@ -22,7 +22,7 @@
 
     Route::get('/cate/{cate_id}','Home\IndexController@cate');
 
-    Route::get('/art','Home\IndexController@article');
+    Route::get('/a/{art_id}','Home\IndexController@article');
 
 
 
