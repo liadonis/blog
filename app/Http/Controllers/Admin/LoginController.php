@@ -31,7 +31,7 @@ class LoginController extends CommonController
 //            dd(session('user'));      //密碼測試
 
             session(['user'=>$user]);
-            return redirect('admin/index');
+            return redirect('admin');
         }else{
 
 //            dd($_SERVER);
