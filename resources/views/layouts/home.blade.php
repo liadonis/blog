@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
     @yield('info')
     <link href="{{asset('resources\views\home\css\base.css')}}" rel="stylesheet">
     <link href="{{asset('resources\views\home\css\index.css')}}" rel="stylesheet">

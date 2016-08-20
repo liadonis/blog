@@ -23,8 +23,8 @@
 
         {{--<h1 class="t_nav"><span>您當前的位置：<a href="{{url('/')}}">首頁</a>&nbsp;&gt;&nbsp;<a href="{{url('cate/'.$field->cate_id)}}">{{$field->cate_name}}</a></span>--}}
 
-            {{--<a href="{{url('/')}}" class="n1">網站首頁</a>--}}
-            {{--<a href="{{url('cate/'.$field->cate_id)}}" class="n2">{{$field->cate_name}}</a>--}}
+        {{--<a href="{{url('/')}}" class="n1">網站首頁</a>--}}
+        {{--<a href="{{url('cate/'.$field->cate_id)}}" class="n2">{{$field->cate_name}}</a>--}}
         {{--</h1>--}}
 
         <div class="index_about">

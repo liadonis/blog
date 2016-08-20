@@ -13,9 +13,9 @@
     <div class="banner">
         <section class="box">
             <ul class="texts">
-                <p>打了死結的青春，捆死一顆蒼白絕望的靈魂。</p>
-                <p>為自己掘一個墳墓來葬心，紅塵一夢，不再追尋。</p>
-                <p>加了鎖的青春，不會再因誰而推開心門。</p>
+                <p>每日最新新聞，盡在新聞部落格網</p>
+                <p>不出門就能知道天下事，不是秀才的專利。</p>
+                <p>有了新聞部落格網，讓您不出門，也能知天下事。</p>
             </ul>
             <div class="avatar"><a href="#"><span>部落格</span></a> </div>
         </section>

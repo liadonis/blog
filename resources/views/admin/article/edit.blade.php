@@ -120,7 +120,7 @@
                         <td>
                             <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.config.js')}}"></script>
                             <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.all.min.js')}}"> </script>
-                            <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/lang/zh-tw/zh-tw.js')}}"></script>
                             <script id="editor" name="art_content" type="text/plain" style="width:860px;height:500px;">{!!$field->art_content!!}</script>
                             <script type="text/javascript">
                                 var ue = UE.getEditor('editor');

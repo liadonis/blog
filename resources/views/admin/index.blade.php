@@ -44,10 +44,10 @@
 			<li>
 				<h3><i class="fa fa-fw fa-thumb-tack"></i>工具導航</h3>
 				<ul class="sub_menu">
-					<li><a href="http://www.yeahzan.com/fa/facss.html" target="main"><i class="fa fa-fw fa-font"></i>圖標調用</a></li>
-					<li><a href="http://hemin.cn/jq/cheatsheet.html" target="main"><i class="fa fa-fw fa-chain"></i>jQuery手冊</a></li>
-					<li><a href="http://tool.c7sky.com/webcolor/" target="main"><i class="fa fa-fw fa-tachometer"></i>配色板</a></li>
-					<li><a href="element.html" target="main"><i class="fa fa-fw fa-tags"></i>其他組件</a></li>
+					{{--<li><a href="http://www.yeahzan.com/fa/facss.html" target="main"><i class="fa fa-fw fa-font"></i>圖標調用</a></li>--}}
+					{{--<li><a href="http://hemin.cn/jq/cheatsheet.html" target="main"><i class="fa fa-fw fa-chain"></i>jQuery手冊</a></li>--}}
+					{{--<li><a href="http://tool.c7sky.com/webcolor/" target="main"><i class="fa fa-fw fa-tachometer"></i>配色板</a></li>--}}
+					{{--<li><a href="element.html" target="main"><i class="fa fa-fw fa-tags"></i>其他組件</a></li>--}}
 				</ul>
 			</li>
 		</ul>
